@@ -4,7 +4,7 @@ import XCTest
 final class WebsiteTests: XCTestCase {
     override func setUp() {
         super.setUp()
-        try? FileManager.default.removeItem(atPath: productsDirectory.path + "/head.html")
+        try? FileManager.default.removeItem(atPath: productsDirectory.path + "/template.html")
         try? FileManager.default.removeItem(atPath: productsDirectory.path + "/content.md")
     }
 
@@ -12,7 +12,7 @@ final class WebsiteTests: XCTestCase {
         let head = "<html>%@</html>"
         let content = "Hello world!"
 
-        FileManager.default.createFile(atPath: productsDirectory.path + "/head.html",
+        FileManager.default.createFile(atPath: productsDirectory.path + "/template.html",
                                        contents: head.data(using: .utf8))
         FileManager.default.createFile(atPath: productsDirectory.path + "/content.md",
                                        contents: content.data(using: .utf8))
@@ -22,7 +22,7 @@ final class WebsiteTests: XCTestCase {
 
     func testGenerate_Failure() throws {
         XCTAssertEqual(try runApp(),
-                       "The file “head.html” couldn’t be opened because there is no such file.\n")
+                       "The file “template.html” couldn’t be opened because there is no such file.\n")
     }
 
     func runApp() throws -> String? {

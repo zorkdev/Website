@@ -12,9 +12,9 @@ func read(filename: String) -> String {
     }
 }
 
-let head = read(filename: "head.html")
+let template = read(filename: "template.html")
 let content = read(filename: "content.md")
 let contentHTML = MarkdownParser().html(from: content)
-let html = String(format: head, contentHTML)
+let html = String(format: template, contentHTML)
 FileManager.default.createFile(atPath: "docs/index.html", contents: html.data(using: .utf8))
 print(html)
