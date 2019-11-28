@@ -1,20 +1,37 @@
 import XCTest
-@testable import Website
 
 final class WebsiteTests: XCTestCase {
+    static var allTests = [
+        ("testGenerate_Success", testGenerate_Success),
+        ("testGenerate_Failure", testGenerate_Failure)
+    ]
+
+    var currentDir: String { FileManager.default.currentDirectoryPath }
+
+    var productsDirectory: URL {
+      #if os(macOS)
+        guard let bundle = Bundle.allBundles.first(where: { $0.bundlePath.hasSuffix(".xctest") }) else {
+            preconditionFailure("Couldn't find the products directory.")
+        }
+        return bundle.bundleURL.deletingLastPathComponent()
+      #else
+        return Bundle.main.bundleURL
+      #endif
+    }
+
     override func setUp() {
         super.setUp()
-        try? FileManager.default.removeItem(atPath: productsDirectory.path + "/template.html")
-        try? FileManager.default.removeItem(atPath: productsDirectory.path + "/content.md")
+        try? FileManager.default.removeItem(atPath: currentDir + "/template.html")
+        try? FileManager.default.removeItem(atPath: currentDir + "/content.md")
     }
 
     func testGenerate_Success() throws {
         let head = "<html>%@</html>"
         let content = "Hello world!"
 
-        FileManager.default.createFile(atPath: productsDirectory.path + "/template.html",
+        FileManager.default.createFile(atPath: currentDir + "/template.html",
                                        contents: head.data(using: .utf8))
-        FileManager.default.createFile(atPath: productsDirectory.path + "/content.md",
+        FileManager.default.createFile(atPath: currentDir + "/content.md",
                                        contents: content.data(using: .utf8))
 
         XCTAssertEqual(try runApp(), "<html><p>Hello world!</p></html>\n")
@@ -26,11 +43,14 @@ final class WebsiteTests: XCTestCase {
     }
 
     func runApp() throws -> String? {
-        guard #available(macOS 10.13, *) else { return nil }
+        guard #available(macOS 10.13, *) else {
+            XCTFail("Can't run tests below macOS 10.13.")
+            return nil
+        }
 
-        let fooBinary = productsDirectory.appendingPathComponent("Website")
+        let binary = productsDirectory.appendingPathComponent("Website")
         let process = Process()
-        process.executableURL = fooBinary
+        process.executableURL = binary
         let pipe = Pipe()
         process.standardOutput = pipe
         try process.run()
@@ -40,20 +60,4 @@ final class WebsiteTests: XCTestCase {
 
         return output
     }
-
-    var productsDirectory: URL {
-      #if os(macOS)
-        for bundle in Bundle.allBundles where bundle.bundlePath.hasSuffix(".xctest") {
-            return bundle.bundleURL.deletingLastPathComponent()
-        }
-        fatalError("couldn't find the products directory")
-      #else
-        return Bundle.main.bundleURL
-      #endif
-    }
-
-    static var allTests = [
-        ("testGenerate_Success", testGenerate_Success),
-        ("testGenerate_Failure", testGenerate_Failure)
-    ]
 }
