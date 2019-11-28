@@ -3,6 +3,9 @@ import PackageDescription
 
 let package = Package(
     name: "Website",
+    platforms: [
+        .macOS(.v10_13)
+    ],
     dependencies: [
         .package(url: "https://github.com/JohnSundell/Ink.git", .upToNextMajor(from: "0.1.2"))
     ],
