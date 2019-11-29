@@ -15,6 +15,8 @@ jobs:
 
   integrate-linux:
     runs-on: ubuntu-latest
+    container:
+      image: swift:latest
     steps:
     - uses: actions/checkout@master
     - name: Test
