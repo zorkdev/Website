@@ -1,5 +1,8 @@
 excluded:
   - .build
+  - XCTestManifests.swift
+  - Tests/LinuxMain.swift
+  - Tests/*/XCTestManifests.swift
 
 opt_in_rules:
   - anyobject_protocol
