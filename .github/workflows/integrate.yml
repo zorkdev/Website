@@ -6,9 +6,16 @@ on:
       - master
 
 jobs:
-  integrate:
+  integrate-macOS:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@master
     - name: Integrate
       run: sh integrate.sh
+
+  integrate-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Test
+      run: swift test

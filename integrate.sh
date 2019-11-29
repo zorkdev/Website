@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eo pipefail
+set -euxo pipefail
 
 if hash mint 2>/dev/null; then
     mint install yonaskolb/mint
