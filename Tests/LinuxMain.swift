@@ -1,4 +1,8 @@
 import XCTest
+
 import WebsiteTests
 
-XCTMain(WebsiteTests.allTests())
+var tests = [XCTestCaseEntry]()
+tests += WebsiteTests.__allTests()
+
+XCTMain(tests)

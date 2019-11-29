@@ -1,11 +1,6 @@
 import XCTest
 
 final class WebsiteTests: XCTestCase {
-    static var allTests = [
-        ("testGenerate_Success", testGenerate_Success),
-        ("testGenerate_Failure", testGenerate_Failure)
-    ]
-
     var previousTemplate: Data?
     var previousContent: Data?
 
