@@ -49,7 +49,11 @@ final class WebsiteTests: XCTestCase {
     }
 
     func testGenerate_Failure() throws {
+        #if os(Linux)
+        XCTAssertEqual(try runApp(), "The operation could not be completed. No such file or directory\n")
+        #else
         XCTAssertEqual(try runApp(), "The file “template.html” couldn’t be opened because there is no such file.\n")
+        #endif
     }
 
     func runApp() throws -> String? {
