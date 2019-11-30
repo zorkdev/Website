@@ -37,7 +37,7 @@ final class WebsiteTests: XCTestCase {
     }
 
     func testGenerate_Success() throws {
-        let template = "<html>%@</html>".data(using: .utf8)
+        let template = "<html>#(content)</html>".data(using: .utf8)
         let content = "Hello world!".data(using: .utf8)
 
         [(templatePath, template), (contentPath, content)].forEach {
