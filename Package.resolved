@@ -9,6 +9,15 @@
           "revision": "a4f0c8de1dc6adb78e2448179960b1be86a385e6",
           "version": "0.1.2"
         }
+      },
+      {
+        "package": "Plot",
+        "repositoryURL": "https://github.com/JohnSundell/Plot.git",
+        "state": {
+          "branch": null,
+          "revision": "608b84e84f987b111d5b6a49dd8adb32d516c60e",
+          "version": "0.1.0"
+        }
       }
     ]
   },

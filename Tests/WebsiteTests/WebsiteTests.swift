@@ -1,13 +1,10 @@
 import XCTest
 
 final class WebsiteTests: XCTestCase {
-    var previousTemplate: Data?
-    var previousContent: Data?
+    private var previousContent: Data?
+    private let contentPath = "content.md"
 
-    let templatePath = "template.html"
-    let contentPath = "content.md"
-
-    var productsDirectory: URL {
+    private var productsDirectory: URL {
       #if os(macOS)
         guard let bundle = Bundle.allBundles.first(where: { $0.bundlePath.hasSuffix(".xctest") }) else {
             preconditionFailure("Couldn't find the products directory.")
@@ -20,43 +17,35 @@ final class WebsiteTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        previousTemplate = FileManager.default.contents(atPath: templatePath)
         previousContent = FileManager.default.contents(atPath: contentPath)
-
-        [templatePath, contentPath].forEach {
-            try? FileManager.default.removeItem(atPath: $0)
-        }
+        try? FileManager.default.removeItem(atPath: contentPath)
     }
 
     override func tearDown() {
         super.tearDown()
-
-        [(templatePath, previousTemplate), (contentPath, previousContent)].forEach {
-            FileManager.default.createFile(atPath: $0.0, contents: $0.1)
-        }
+        FileManager.default.createFile(atPath: contentPath, contents: previousContent)
     }
 
     func testGenerate_Success() throws {
-        let template = "<html>#(content)</html>".data(using: .utf8)
         let content = "Hello world!".data(using: .utf8)
+        FileManager.default.createFile(atPath: contentPath, contents: content)
 
-        [(templatePath, template), (contentPath, content)].forEach {
-            FileManager.default.createFile(atPath: $0.0, contents: $0.1)
-        }
+        // swiftlint:disable:next line_length
+        let expectedHTML = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"/><title>Attila Nemet</title><meta name=\"twitter:title\" content=\"Attila Nemet\"/><meta name=\"og:title\" content=\"Attila Nemet\"/><meta name=\"description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"twitter:description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"og:description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"color-scheme\" content=\"light dark\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/><link rel=\"stylesheet\" href=\"styles.css\" type=\"text/css\"/></head><body><p>Hello world!</p></body></html>"
 
-        XCTAssertEqual(try runApp(), "<html><p>Hello world!</p></html>\n")
-        XCTAssertEqual(try String(contentsOfFile: "docs/index.html"), "<html><p>Hello world!</p></html>")
+        XCTAssertEqual(try runApp(), expectedHTML + "\n")
+        XCTAssertEqual(try String(contentsOfFile: "docs/index.html"), expectedHTML)
     }
 
     func testGenerate_Failure() throws {
         #if os(Linux)
         XCTAssertEqual(try runApp(), "The operation could not be completed. No such file or directory\n")
         #else
-        XCTAssertEqual(try runApp(), "The file “template.html” couldn’t be opened because there is no such file.\n")
+        XCTAssertEqual(try runApp(), "The file “content.md” couldn’t be opened because there is no such file.\n")
         #endif
     }
 
-    func runApp() throws -> String? {
+    private func runApp() throws -> String? {
         let binary = productsDirectory.appendingPathComponent("Website")
         let process = Process()
         process.executableURL = binary
