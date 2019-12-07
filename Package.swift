@@ -7,6 +7,7 @@ let package = Package(
         .macOS(.v10_13)
     ],
     dependencies: [
+        .package(url: "https://github.com/JohnSundell/Splash.git", .upToNextMajor(from: "0.9.0")),
         .package(url: "https://github.com/JohnSundell/Ink.git", .upToNextMajor(from: "0.2.0")),
         .package(url: "https://github.com/JohnSundell/Plot.git", .upToNextMajor(from: "0.1.1")),
         .package(url: "https://github.com/realm/SwiftLint.git", .upToNextMajor(from: "0.38.0")),
@@ -14,7 +15,7 @@ let package = Package(
     ],
     targets: [
         .target(name: "Website", dependencies: ["WebsiteKit"]),
-        .target(name: "WebsiteKit", dependencies: ["Ink", "Plot"]),
+        .target(name: "WebsiteKit", dependencies: ["Splash", "Ink", "Plot"]),
         .testTarget(name: "WebsiteTests", dependencies: ["Website"])
     ]
 )

@@ -1,4 +1,5 @@
 import Foundation
+import Splash
 import Ink
 import Plot
 
@@ -33,8 +34,9 @@ private func template(content: String) -> HTML {
 }
 
 public func generate() {
+    let modifier = Modifier(target: .codeBlocks) { MarkdownDecorator().decorate(String($0.markdown)) }
     let content = read(filename: "content.md")
-    let contentHTML = MarkdownParser().html(from: content)
+    let contentHTML = MarkdownParser(modifiers: [modifier]).html(from: content)
     let html = template(content: contentHTML).render()
     try? FileManager.default.createDirectory(atPath: "docs", withIntermediateDirectories: false)
     FileManager.default.createFile(atPath: "docs/index.html", contents: html.data(using: .utf8))

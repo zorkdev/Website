@@ -27,11 +27,19 @@ final class WebsiteTests: XCTestCase {
     }
 
     func testGenerate_Success() throws {
-        let content = "Hello world!".data(using: .utf8)
+        let content =
+            """
+            Hello world!
+            ```
+            struct Model: Codable {
+                let value: String
+            }
+            ```
+            """.data(using: .utf8)
         FileManager.default.createFile(atPath: contentPath, contents: content)
 
         // swiftlint:disable:next line_length
-        let expectedHTML = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"/><title>Attila Nemet</title><meta name=\"twitter:title\" content=\"Attila Nemet\"/><meta name=\"og:title\" content=\"Attila Nemet\"/><meta name=\"description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"twitter:description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"og:description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"color-scheme\" content=\"light dark\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/><link rel=\"stylesheet\" href=\"styles.css\" type=\"text/css\"/></head><body><p>Hello world!</p></body></html>"
+        let expectedHTML = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"/><title>Attila Nemet</title><meta name=\"twitter:title\" content=\"Attila Nemet\"/><meta name=\"og:title\" content=\"Attila Nemet\"/><meta name=\"description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"twitter:description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"og:description\" content=\"I\'m an iOS engineer based in London.\"/><meta name=\"color-scheme\" content=\"light dark\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/><link rel=\"stylesheet\" href=\"styles.css\" type=\"text/css\"/></head><body><p>Hello world!</p><pre class=\"splash\"><code><span class=\"keyword\">struct</span> Model: <span class=\"type\">Codable</span> {\n    <span class=\"keyword\">let</span> value: <span class=\"type\">String</span>\n}</code></pre></body></html>"
 
         XCTAssertEqual(try runApp(), expectedHTML + "\n")
         XCTAssertEqual(try String(contentsOfFile: "docs/index.html"), expectedHTML)

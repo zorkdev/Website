@@ -1,15 +1,29 @@
 :root {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    --secondary-text-color: #383838;
-    --secondary-background-color: #e2e2e2;
+    --secondary-text-color: #262626;
+    --secondary-background-color: #f8f8f8;
     --link-color: #007aff;
+    --keyword-color: #ad3da4;
+    --type-color: #4a22b0;
+    --call-color: #3e8087;
+    --number-color: #272ad9;
+    --string-color: #d1301b;
+    --comment-color: #6f808c;
+    --preprocessing-color: #78492a;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --secondary-text-color: #c7c7c7;
-        --secondary-background-color: #171717;
+        --secondary-text-color: #dfdfe0;
+        --secondary-background-color: #22252a;
         --link-color: #0a84ff;
+        --keyword-color: #ff7ab2;
+        --type-color: #dabaff;
+        --call-color: #78c2b3;
+        --number-color: #d9ca7d;
+        --string-color: #ff826f;
+        --comment-color: #7f8c98;
+        --preprocessing-color: #ffa14e;
     }
 }
 
@@ -24,10 +38,10 @@ html {
 
 body {
     display: table-cell;
-    vertical-align: middle;
-    text-align: center;
     max-width: 500px;
     padding: 0px 40px 0px 40px;
+    vertical-align: middle;
+    text-align: center;
     line-height: 1.5
 }
 
@@ -38,6 +52,15 @@ code {
     display: inline-block;
     border-radius: 6px;
     padding: 4px;
+}
+
+pre code {
+    display: block;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-x: auto;
+    text-align: left;
+    -webkit-overflow-scrolling: touch;
 }
 
 img {
@@ -59,3 +82,13 @@ a:link, a:visited, a:active {
 a:hover {
     text-decoration: underline;
 }
+
+pre code .keyword { color: var(--keyword-color); }
+pre code .type { color: var(--type-color); }
+pre code .call { color: var(--call-color); }
+pre code .property { color: var(--call-color); }
+pre code .number { color: var(--number-color); }
+pre code .string { color: var(--string-color); }
+pre code .comment { color: var(--comment-color); }
+pre code .dotAccess { color: var(--call-color); }
+pre code .preprocessing { color: var(--preprocessing-color); }
