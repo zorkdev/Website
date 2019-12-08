@@ -4,6 +4,9 @@ excluded:
   - Tests/LinuxMain.swift
   - Tests/*/XCTestManifests.swift
 
+line_length:
+  ignores_interpolated_strings: true
+
 opt_in_rules:
   - anyobject_protocol
   - array_init

@@ -78,6 +78,11 @@ blockquote {
 }
 
 img {
+    display: block;
+    width: 100%;
+}
+
+.img-circle {
     border-radius: 50%;
     margin: auto;
     display: block;
