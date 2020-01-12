@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/Quick/Nimble.git",
         "state": {
           "branch": null,
-          "revision": "6abeb3f5c03beba2b9e4dbe20886e773b5b629b6",
-          "version": "8.0.4"
+          "revision": "b02b00b30b6353632aa4a5fb6124f8147f7140c0",
+          "version": "8.0.5"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/JohnSundell/Plot.git",
         "state": {
           "branch": null,
-          "revision": "dd7fce79ce4802afdc7d45ce34bddc5cea566202",
-          "version": "0.2.0"
+          "revision": "ccabb2674ca0d9ccfabd5e7c0c44c6cca6c827fb",
+          "version": "0.5.0"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/JohnSundell/ShellOut.git",
         "state": {
           "branch": null,
-          "revision": "d3d54ce662dfee7fef619330b71d251b8d4869f9",
-          "version": "2.2.0"
+          "revision": "e1577acf2b6e90086d01a6d5e2b8efdaae033568",
+          "version": "2.3.0"
         }
       },
       {
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/jpsim/SourceKitten.git",
         "state": {
           "branch": null,
-          "revision": "356551fc513eb12ed779bb369f79cf86a3a01599",
-          "version": "0.27.0"
+          "revision": "97b5848e5692150d75b5cf0b81d7ebef5f4d5071",
+          "version": "0.28.0"
         }
       },
       {
@@ -105,8 +105,8 @@
         "repositoryURL": "https://github.com/JohnSundell/Splash.git",
         "state": {
           "branch": null,
-          "revision": "bc20ac969c1b2a770bf315497e0a66d7367f7fec",
-          "version": "0.9.0"
+          "revision": "4da9bbd0bc14d5774b112fc4bb1859d5a67fb478",
+          "version": "0.10.0"
         }
       },
       {
@@ -114,8 +114,8 @@
         "repositoryURL": "https://github.com/realm/SwiftLint.git",
         "state": {
           "branch": null,
-          "revision": "8dc3e811934704a3d0e46a8ffd1de785fddcf7ec",
-          "version": "0.38.0"
+          "revision": "76d44cff391645a7f4d5ba2bf1853afaf3f5c1fb",
+          "version": "0.38.2"
         }
       },
       {

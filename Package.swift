@@ -7,10 +7,10 @@ let package = Package(
         .macOS(.v10_13)
     ],
     dependencies: [
-        .package(url: "https://github.com/JohnSundell/Splash.git", .upToNextMajor(from: "0.9.0")),
+        .package(url: "https://github.com/JohnSundell/Splash.git", .upToNextMajor(from: "0.10.0")),
         .package(url: "https://github.com/JohnSundell/Ink.git", .upToNextMajor(from: "0.2.0")),
-        .package(url: "https://github.com/JohnSundell/Plot.git", .upToNextMajor(from: "0.2.0")),
-        .package(url: "https://github.com/realm/SwiftLint.git", .upToNextMajor(from: "0.38.0")),
+        .package(url: "https://github.com/JohnSundell/Plot.git", .upToNextMajor(from: "0.5.0")),
+        .package(url: "https://github.com/realm/SwiftLint.git", .upToNextMajor(from: "0.38.2")),
         .package(url: "https://github.com/shibapm/Komondor.git", .upToNextMajor(from: "1.0.4"))
     ],
     targets: [

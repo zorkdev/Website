@@ -27,7 +27,7 @@ private func read(filename: String) -> String {
 
 private func template(content: String) -> HTML {
     HTML(
-        .lang("en"),
+        .lang(.english),
         .head(
             .encoding(.utf8),
             .title("Attila Nemet"),
