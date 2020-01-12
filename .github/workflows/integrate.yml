@@ -20,4 +20,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Integrate
-      run: sh integrate.sh
+      run: swift run
