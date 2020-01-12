@@ -1,8 +1,5 @@
 excluded:
   - .build
-  - XCTestManifests.swift
-  - Tests/LinuxMain.swift
-  - Tests/*/XCTestManifests.swift
 
 line_length:
   ignores_interpolated_strings: true

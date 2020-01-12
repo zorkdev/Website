@@ -1,0 +1,110 @@
+:root {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    --secondary-text-color: #262626;
+    --secondary-background-color: #f8f8f8;
+    --tertiary-text-color: #6b6b6b;
+    --info-color: #4daafc;
+    --link-color: #007aff;
+    --keyword-color: #ad3da4;
+    --type-color: #4a22b0;
+    --call-color: #3e8087;
+    --number-color: #272ad9;
+    --string-color: #d1301b;
+    --comment-color: #6f808c;
+    --preprocessing-color: #78492a;
+    --border-radius: 8px;
+    --padding: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --secondary-text-color: #dfdfe0;
+        --secondary-background-color: #22252a;
+        --tertiary-text-color: #8c8c8c;
+        --link-color: #0a84ff;
+        --keyword-color: #ff7ab2;
+        --type-color: #dabaff;
+        --call-color: #78c2b3;
+        --number-color: #d9ca7d;
+        --string-color: #ff826f;
+        --comment-color: #7f8c98;
+        --preprocessing-color: #ffa14e;
+    }
+}
+
+body {
+    max-width: 500px;
+    padding: 0px 40px;
+    margin: auto;
+    text-align: center;
+    line-height: 1.5
+}
+
+code {
+    font-family: "Menlo", monospace;
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-text-color);
+    display: inline-block;
+    border-radius: 6px;
+    padding: 0px 4px;
+}
+
+pre code {
+    display: block;
+    border-radius: var(--border-radius);
+    padding: var(--padding);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+pre code .keyword { color: var(--keyword-color); }
+pre code .type { color: var(--type-color); }
+pre code .call { color: var(--call-color); }
+pre code .property { color: var(--call-color); }
+pre code .number { color: var(--number-color); }
+pre code .string { color: var(--string-color); }
+pre code .comment { color: var(--comment-color); }
+pre code .dotAccess { color: var(--call-color); }
+pre code .preprocessing { color: var(--preprocessing-color); }
+
+blockquote {
+    font-size: 0.9em;
+    color: var(--secondary-text-color);
+    background: var(--secondary-background-color);
+    border-left: 6px solid var(--info-color);
+    border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+    margin: 0px;
+    padding: 1px 6px 1px 12px;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.img-circle {
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    width: 70%;
+    padding: var(--padding) 0px;
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:link, a:visited, a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    font-size: 0.9em;
+    color: var(--tertiary-text-color);
+    text-align: center;
+    padding: var(--padding) 0px;
+}

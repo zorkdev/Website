@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "Codextended",
+        "repositoryURL": "https://github.com/johnsundell/codextended.git",
+        "state": {
+          "branch": null,
+          "revision": "8d7c46dfc9c55240870cf5561d6cefa41e3d7105",
+          "version": "0.3.0"
+        }
+      },
+      {
         "package": "Commandant",
         "repositoryURL": "https://github.com/Carthage/Commandant.git",
         "state": {
@@ -29,21 +38,21 @@
         }
       },
       {
+        "package": "Files",
+        "repositoryURL": "https://github.com/johnsundell/files.git",
+        "state": {
+          "branch": null,
+          "revision": "22fe84797d499ffca911ccd896b34efaf06a50b9",
+          "version": "4.1.1"
+        }
+      },
+      {
         "package": "Ink",
-        "repositoryURL": "https://github.com/JohnSundell/Ink.git",
+        "repositoryURL": "https://github.com/johnsundell/ink.git",
         "state": {
           "branch": null,
           "revision": "c88bbce588a1ebfde2cf4d61eb9865a3edaa27d4",
           "version": "0.2.0"
-        }
-      },
-      {
-        "package": "Komondor",
-        "repositoryURL": "https://github.com/shibapm/Komondor.git",
-        "state": {
-          "branch": null,
-          "revision": "3cd6d76887816ead5931ddbfb249c2935f518e17",
-          "version": "1.0.4"
         }
       },
       {
@@ -56,21 +65,21 @@
         }
       },
       {
-        "package": "PackageConfig",
-        "repositoryURL": "https://github.com/shibapm/PackageConfig",
-        "state": {
-          "branch": null,
-          "revision": "fd0829aac9851434b3d2db0890e27bc489fc973a",
-          "version": "0.12.2"
-        }
-      },
-      {
         "package": "Plot",
-        "repositoryURL": "https://github.com/JohnSundell/Plot.git",
+        "repositoryURL": "https://github.com/johnsundell/plot.git",
         "state": {
           "branch": null,
           "revision": "ccabb2674ca0d9ccfabd5e7c0c44c6cca6c827fb",
           "version": "0.5.0"
+        }
+      },
+      {
+        "package": "Publish",
+        "repositoryURL": "https://github.com/JohnSundell/Publish.git",
+        "state": {
+          "branch": null,
+          "revision": "c1bde99ec71f992cbe7dec6310759b14258567a8",
+          "version": "0.3.0"
         }
       },
       {
@@ -84,7 +93,7 @@
       },
       {
         "package": "ShellOut",
-        "repositoryURL": "https://github.com/JohnSundell/ShellOut.git",
+        "repositoryURL": "https://github.com/johnsundell/shellout.git",
         "state": {
           "branch": null,
           "revision": "e1577acf2b6e90086d01a6d5e2b8efdaae033568",
@@ -102,11 +111,29 @@
       },
       {
         "package": "Splash",
-        "repositoryURL": "https://github.com/JohnSundell/Splash.git",
+        "repositoryURL": "https://github.com/johnsundell/splash.git",
         "state": {
           "branch": null,
           "revision": "4da9bbd0bc14d5774b112fc4bb1859d5a67fb478",
           "version": "0.10.0"
+        }
+      },
+      {
+        "package": "SplashPublishPlugin",
+        "repositoryURL": "https://github.com/JohnSundell/SplashPublishPlugin",
+        "state": {
+          "branch": null,
+          "revision": "34bb50bd83b2a40c63afc35f090c76619dc149ce",
+          "version": "0.1.0"
+        }
+      },
+      {
+        "package": "Sweep",
+        "repositoryURL": "https://github.com/johnsundell/sweep.git",
+        "state": {
+          "branch": null,
+          "revision": "d357d12c9558e51f037bf2f956d5cf6c73dc0d44",
+          "version": "0.3.0"
         }
       },
       {

@@ -1,3 +1,89 @@
-import WebsiteKit
+import Foundation
+import Files
+import Ink
+import Plot
+import SplashPublishPlugin
+import Publish
 
-generate()
+struct MyWebsite: Website {
+    enum SectionID: String, WebsiteSectionID {
+        case about
+    }
+
+    struct ItemMetadata: WebsiteItemMetadata {}
+
+    let url = URL(string: "https://www.attilanemet.com")!
+    let name = "Attila Nemet"
+    let description = "I'm an iOS engineer based in London."
+    let language: Language = .english
+    let imagePath: Path? = nil
+}
+
+extension Theme where Site == MyWebsite {
+    static var custom: Self {
+        Theme(htmlFactory: CustomHTMLFactory())
+    }
+
+    private struct CustomHTMLFactory: HTMLFactory {
+        func makeIndexHTML(for index: Index, context: PublishingContext<MyWebsite>) throws -> HTML {
+            HTML(
+                .lang(context.site.language),
+                .head(
+                    .encoding(.utf8),
+                    .title(context.site.name),
+                    .description(context.site.description),
+                    .meta(.name("color-scheme"), .content("light dark")),
+                    .viewport(.accordingToDevice),
+                    .stylesheet("styles.css")
+                ),
+                .body(
+                    .contentBody(index.body)
+                )
+            )
+        }
+
+        func makeSectionHTML(for section: Section<MyWebsite>, context: PublishingContext<MyWebsite>) throws -> HTML {
+            HTML()
+        }
+        func makeItemHTML(for item: Item<MyWebsite>, context: PublishingContext<MyWebsite>) throws -> HTML { HTML() }
+        func makePageHTML(for page: Page, context: PublishingContext<MyWebsite>) throws -> HTML { HTML() }
+        func makeTagListHTML(for page: TagListPage, context: PublishingContext<MyWebsite>) throws -> HTML? { nil }
+        func makeTagDetailsHTML(for page: TagDetailsPage, context: PublishingContext<MyWebsite>) throws -> HTML? { nil }
+    }
+}
+
+extension StringProtocol {
+    func substring(start: Character, end: Character) -> SubSequence? {
+        guard let lowerBound = firstIndex(of: start),
+            let upperBound = lastIndex(of: end) else { return nil }
+        let newLowerBound = self.index(lowerBound, offsetBy: 1)
+        return self[newLowerBound..<upperBound]
+    }
+}
+
+extension Plugin {
+    static func darkModeImages() -> Self {
+        Plugin(name: "Dark Mode Images") { context in
+            context.markdownParser.addModifier(Modifier(target: .images) { input in
+                guard let filename = input.markdown.substring(start: "(", end: "."),
+                    let fileExtension = input.markdown.substring(start: ".", end: ")") else { return input.html }
+                return
+                    """
+                    <picture><source srcset="\(filename)-dark.\(fileExtension)" media="(prefers-color-scheme: dark)">\(input.html)</picture>
+                    """
+            })
+        }
+    }
+}
+
+try MyWebsite().publish(using: [
+    .installPlugin(.splash(withClassPrefix: "")),
+    .installPlugin(.darkModeImages()),
+    .optional(.copyResources()),
+    .addMarkdownFiles(),
+    .generateHTML(withTheme: .custom)
+])
+
+let packageFolder = try File(path: #file).parent?.parent?.parent
+try? packageFolder?.subfolder(named: "docs").delete()
+try packageFolder?.subfolder(named: "Output").rename(to: "docs")
