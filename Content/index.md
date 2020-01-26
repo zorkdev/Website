@@ -2,7 +2,7 @@
 
 `iOS Engineer 🛠`
 
-<img class="img-circle" src="image.jpg" alt="Me"/>
+<img class="img-circle" src="images/me.jpg" srcset="images/me-2x.jpg 2x" alt="Me"/>
 
 [GitHub](https://www.github.com/zorkdev) | [LinkedIn](https://www.linkedin.com/in/attila-nemet) | [Email](mailto:me@attilanemet.com)
 

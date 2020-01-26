@@ -74,7 +74,7 @@ extension Plugin {
                     let fileExtension = input.markdown.substring(start: ".", end: ")") else { return input.html }
                 return
                     """
-                    <picture><source srcset="\(filename)-dark.\(fileExtension)" media="(prefers-color-scheme: dark)">\(input.html)</picture>
+                    <picture><source srcset="\(filename)-dark.\(fileExtension), \(filename)-dark-2x.\(fileExtension) 2x" media="(prefers-color-scheme: dark)">\(input.html.replacingOccurrences(of: "/>", with: " srcset=\"\(filename)-2x.\(fileExtension) 2x\"/>"))</picture>
                     """
             })
         }
