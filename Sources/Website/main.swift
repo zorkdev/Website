@@ -17,6 +17,7 @@ struct MyWebsite: Website {
     let description = "I'm an iOS engineer based in London."
     let language: Language = .english
     let imagePath: Path? = nil
+    let favicon: Favicon? = .init(path: "favicon.png")
 }
 
 extension Theme where Site == MyWebsite {
@@ -34,7 +35,11 @@ extension Theme where Site == MyWebsite {
                     .description(context.site.description),
                     .meta(.name("color-scheme"), .content("light dark")),
                     .viewport(.accordingToDevice),
-                    .stylesheet("styles.css")
+                    .stylesheet("styles.css"),
+                    .unwrap(context.site.favicon, { .favicon($0) }),
+                    .link(.attribute(named: "rel", value: "apple-touch-icon"),
+                          .href("apple-touch-icon.png"),
+                          .type("image/png"))
                 ),
                 .body(
                     .contentBody(index.body)
