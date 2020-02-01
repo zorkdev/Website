@@ -37,9 +37,7 @@ extension Theme where Site == MyWebsite {
                     .viewport(.accordingToDevice),
                     .stylesheet("styles.css"),
                     .unwrap(context.site.favicon, { .favicon($0) }),
-                    .link(.attribute(named: "rel", value: "apple-touch-icon"),
-                          .href("apple-touch-icon.png"),
-                          .type("image/png"))
+                    .link(.rel(.appleTouchIcon), .href("apple-touch-icon.png"), .type("image/png"))
                 ),
                 .body(
                     .contentBody(index.body)
