@@ -9,7 +9,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/JohnSundell/Publish.git", .upToNextMajor(from: "0.5.0")),
         .package(url: "https://github.com/JohnSundell/SplashPublishPlugin", .upToNextMajor(from: "0.1.0")),
-        .package(url: "https://github.com/realm/SwiftLint.git", .upToNextMajor(from: "0.38.2"))
+        .package(url: "https://github.com/realm/SwiftLint.git", .upToNextMajor(from: "0.39.1"))
     ],
     targets: [
         .target(name: "Website", dependencies: ["Publish", "SplashPublishPlugin"])
