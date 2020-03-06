@@ -69,11 +69,20 @@ extension Plugin {
         Plugin(name: "Dark Mode Images") { context in
             context.markdownParser.addModifier(Modifier(target: .images) { input in
                 guard let filename = input.markdown.substring(start: "(", end: "."),
-                    let fileExtension = input.markdown.substring(start: ".", end: ")") else { return input.html }
-                return
-                    """
-                    <picture><source srcset="\(filename)-dark.\(fileExtension), \(filename)-dark-2x.\(fileExtension) 2x" media="(prefers-color-scheme: dark)">\(input.html.replacingOccurrences(of: "/>", with: " srcset=\"\(filename)-2x.\(fileExtension) 2x\"/>"))</picture>
-                    """
+                    let fileExtension = input.markdown.substring(start: ".", end: ")"),
+                    let alt = input.markdown.substring(start: "[", end: "]") else { return input.html }
+
+                return Node.picture(
+                    .source(
+                        .srcset("\(filename)-dark.\(fileExtension), \(filename)-dark-2x.\(fileExtension) 2x"),
+                        .media("(prefers-color-scheme: dark)")
+                    ),
+                    .img(
+                        .src("\(filename).\(fileExtension)"),
+                        .alt(String(alt)),
+                        .attribute(named: "srcset", value: "\(filename)-2x.\(fileExtension) 2x")
+                    )
+                ).render()
             })
         }
     }
