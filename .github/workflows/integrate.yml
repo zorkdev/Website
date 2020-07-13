@@ -3,7 +3,7 @@ name: Integrate
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   integrate-macOS:
