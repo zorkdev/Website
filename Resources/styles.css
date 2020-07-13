@@ -79,14 +79,14 @@ blockquote {
 
 img {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    padding: var(--padding) 0px;
 }
 
 img[src$="#circle"] {
     border-radius: 50%;
-    margin: auto;
     width: 70%;
-    padding: var(--padding) 0px;
 }
 
 a {

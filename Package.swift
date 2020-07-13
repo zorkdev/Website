@@ -7,7 +7,7 @@ let package = Package(
         .executable(name: "Website", targets: ["Website"])
     ],
     dependencies: [
-        .package(url: "https://github.com/JohnSundell/Publish.git", from: "0.5.0"),
+        .package(url: "https://github.com/JohnSundell/Publish.git", from: "0.7.0"),
         .package(url: "https://github.com/JohnSundell/SplashPublishPlugin", from: "0.1.0"),
         .package(url: "https://github.com/realm/SwiftLint.git", from: "0.39.2")
     ],
