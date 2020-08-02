@@ -1,5 +1,5 @@
 :root {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     --secondary-text-color: #262626;
     --secondary-background-color: #f8f8f8;
     --tertiary-text-color: #6b6b6b;
@@ -41,7 +41,7 @@ body {
 }
 
 code {
-    font-family: "Menlo", monospace;
+    font-family: ui-monospace, "Menlo", monospace;
     background-color: var(--secondary-background-color);
     color: var(--secondary-text-color);
     display: inline-block;
