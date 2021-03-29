@@ -16,6 +16,7 @@ opt_in_rules:
   - contains_over_first_not_nil
   - contains_over_range_nil_comparison
   - convenience_type
+  - discouraged_assert
   - discouraged_object_literal
   - discouraged_optional_boolean
   - empty_collection_literal
@@ -48,8 +49,8 @@ opt_in_rules:
   - overridden_super_call
   - pattern_matching_keywords
   - prefer_self_type_over_type_of_self
+  - private_subject
   - prohibited_super_call
-  - raw_value_for_camel_cased_codable_enum
   - reduce_into
   - redundant_nil_coalescing
   - redundant_type_annotation
@@ -59,6 +60,7 @@ opt_in_rules:
   - static_operator
   - strict_fileprivate
   - strong_iboutlet
+  - test_case_accessibility
   - toggle_bool
   - trailing_closure
   - unavailable_function
