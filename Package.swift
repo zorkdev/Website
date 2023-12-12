@@ -1,17 +1,20 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
     name: "Website",
+    platforms: [
+        .macOS(.v12)
+    ],
     products: [
         .executable(name: "Website", targets: ["Website"])
     ],
     dependencies: [
-        .package(url: "https://github.com/JohnSundell/Publish.git", from: "0.7.0"),
-        .package(url: "https://github.com/JohnSundell/SplashPublishPlugin", from: "0.1.0"),
-        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.39.2")
+        .package(url: "https://github.com/JohnSundell/Publish.git", from: "0.9.0"),
+        .package(url: "https://github.com/JohnSundell/SplashPublishPlugin", from: "0.2.0"),
+        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.54.0")
     ],
     targets: [
-        .target(name: "Website", dependencies: ["Publish", "SplashPublishPlugin"])
+        .executableTarget(name: "Website", dependencies: ["Publish", "SplashPublishPlugin"])
     ]
 )

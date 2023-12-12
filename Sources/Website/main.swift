@@ -36,7 +36,7 @@ extension Theme where Site == MyWebsite {
                     .meta(.name("color-scheme"), .content("light dark")),
                     .viewport(.accordingToDevice),
                     .stylesheet("styles.css"),
-                    .unwrap(context.site.favicon, { .favicon($0) }),
+                    .unwrap(context.site.favicon) { .favicon($0) },
                     .link(.rel(.appleTouchIcon), .href("apple-touch-icon.png"), .type("image/png"))
                 ),
                 .body(

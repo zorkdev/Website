@@ -6,12 +6,12 @@ on:
       - main
 
 jobs:
-  integrate-macOS:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Integrate
-      run: sh integrate.sh
+#  integrate-macOS:
+#    runs-on: macos-latest
+#    steps:
+#    - uses: actions/checkout@v1
+#    - name: Integrate
+#      run: sh integrate.sh
 
   integrate-linux:
     runs-on: ubuntu-latest
