@@ -1,0 +1,62 @@
+:root {
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+    --secondary-text-color: #262626;
+    --secondary-background-color: #f8f8f8;
+    --link-color: #007aff;
+    --padding: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --secondary-text-color: #dfdfe0;
+        --secondary-background-color: #22252a;
+        --link-color: #0a84ff;
+    }
+}
+
+body {
+    max-width: 500px;
+    padding: 0px 40px;
+    margin: auto;
+    text-align: center;
+    line-height: 1.5;
+}
+
+code {
+    font-family: ui-monospace, "Menlo", monospace;
+    background-color: var(--secondary-background-color);
+    color: var(--secondary-text-color);
+    display: inline-block;
+    border-radius: 6px;
+    padding: 0px 4px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+    padding: var(--padding) 0px;
+}
+
+img[src$="#circle"] {
+    border-radius: 50%;
+    width: 70%;
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
